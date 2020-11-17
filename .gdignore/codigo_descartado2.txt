@@ -1,0 +1,66 @@
+extends KinematicBody2D
+
+
+#State 
+var pos = null
+
+var max_speed = 300
+export var target_path: = NodePath()
+
+var distance_offset = 10
+var slow_radius = 200
+var velocity = Vector2()
+
+
+func _physics_process(delta):
+	if pos != null:
+		orbiting(pos)
+		#if !(self.position.distance_to(pos) < distance_offset):
+		movement()
+
+func movement():
+	velocity = velocity + orbiting(pos)
+	rotation = velocity.angle()
+	velocity = move_and_slide(velocity)
+
+func follow(target):
+	if target == null:
+		return Vector2.ZERO
+	var desired_velocity = (target - self.position).normalized()*max_speed
+	var distance = self.position.distance_to(target)
+	if distance < slow_radius:
+		desired_velocity *= ( distance / slow_radius )*0.8+0.2
+	var steering = (desired_velocity - velocity)
+	return steering	
+
+func seek(target):
+	var desired_velocity = (target - self.position).normalized()*max_speed
+	var steering = (desired_velocity - velocity)
+	return steering
+	
+func orbiting(target):
+	var radio = 100
+	var offset = 50
+	var distance = target.distance_to(self.position)
+	var steering = Vector2(0,0)
+	if distance > radio-offset and distance < radio+offset:
+		var angle = target.angle_to(Vector2(1,0)) + PI/4
+		var point = Vector2(target.x+sin(angle)*radio,target.y+cos(angle)*radio)
+		$RayCast2D.cast_to = point
+		var desired_velocity = (point-self.position).normalized()*max_speed
+		steering = (desired_velocity - velocity)
+		print(distance)
+	else:
+		var point = (target-self.position).clamped(radio)
+		var desired_velocity = (point).normalized()*max_speed
+		steering = (desired_velocity - velocity)
+		print("follow target")
+	return steering
+
+
+func select(flag):
+	if flag == true:
+		$Sprite.modulate = Color(0,255,255,255)
+		return true
+	$Sprite.modulate = Color(1,1,1,1)
+	return false

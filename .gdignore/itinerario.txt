@@ -1,0 +1,11 @@
+-Añadir enemigo AI
+
+-Crear nave sin movimientos inerciales		#Hecho
+-Crear patrones de ataques
+-Agregar Patron Arrival				#Hecho
+-Agregar Patron Enjambre
+-Crear una maquina de estados para la AI
+
+-Crear diagrama de flujo para Control
+
+-Mejorar evasion de colisiones

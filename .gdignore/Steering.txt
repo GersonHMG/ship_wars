@@ -1,0 +1,11 @@
+to_point(punto): 
+va al punto y no para
+
+arrival(punto): 
+va a un punto y mientras mas se acerca disminuye su velocidad
+
+orbiting(punto, radio): 
+orbita un punto
+
+run_away(punto): 
+escapa de un target
