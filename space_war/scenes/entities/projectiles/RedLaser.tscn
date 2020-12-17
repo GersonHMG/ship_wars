@@ -1,24 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/entities/projectiles/laser.png" type="Texture" id=1]
 [ext_resource path="res://scenes/entities/projectiles/RedLaser.gd" type="Script" id=2]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo1.png" type="Texture" id=3]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo2.png" type="Texture" id=4]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo8.png" type="Texture" id=5]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo3.png" type="Texture" id=6]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo6.png" type="Texture" id=7]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo7.png" type="Texture" id=8]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo4.png" type="Texture" id=9]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo5.png" type="Texture" id=10]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo9.png" type="Texture" id=11]
+[ext_resource path="res://assets/entities/effects/explotions/bubble_explo10.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "explotion",
+"speed": 30.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.2543, 1.25848 )
+extents = Vector2( 4.8403, 0.545118 )
 
 [node name="RedLaser" type="Area2D"]
 script = ExtResource( 2 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( -0.104729, 0.109205 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 2 )
+animation = "explotion"
+
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 0.499059, -0.305317 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.08456, 0.917704 )
+position = Vector2( 0.0753645, 0.172834 )
 shape = SubResource( 1 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
 [connection signal="body_entered" from="." to="." method="_on_RedLaser_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/map/space2.jpg" type="Texture" id=1]
 [ext_resource path="res://scenes/entities/base/base_ship.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/ui/ShipsControl/Control.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/debug/target.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ui/ShipsControl/Camera2D.gd" type="Script" id=6]
@@ -11,7 +10,6 @@
 radius = 3.31872
 
 [node name="Control" type="Node2D"]
-script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 511.58, 298.264 )
@@ -26,31 +24,31 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Area2D" parent="." groups=[
-"allies",
-] instance=ExtResource( 5 )]
-position = Vector2( 480.675, 300.548 )
-
 [node name="bullets" type="Node2D" parent="."]
 
 [node name="Ships" type="Node2D" parent="."]
 
-[node name="BaseShip9" parent="Ships" groups=[
-"enemies",
-] instance=ExtResource( 2 )]
-position = Vector2( 263.393, 305.928 )
-max_speed = 100
-manual_control = true
-
 [node name="test" type="Sprite" parent="Ships"]
-position = Vector2( 78.2108, 369.587 )
-scale = Vector2( 0.16022, 0.210551 )
+position = Vector2( 328.839, 42.2074 )
+scale = Vector2( 0.310981, 0.330667 )
 texture = ExtResource( 4 )
 
+[node name="Area2D" parent="Ships" groups=[
+"allies",
+] instance=ExtResource( 5 )]
+position = Vector2( 585.044, 187.955 )
+rotation = -0.145906
+
+[node name="BaseShip" parent="Ships" groups=[
+"enemies",
+] instance=ExtResource( 2 )]
+position = Vector2( 141.279, 261.921 )
+manual_control = false
+
 [node name="SelectTool" type="Area2D" parent="."]
+position = Vector2( 138.898, 109.531 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectTool"]
+position = Vector2( -0.793701, 0.793686 )
 shape = SubResource( 1 )
 disabled = true
-[connection signal="body_entered" from="SelectTool" to="." method="_on_SelectTool_body_entered"]
-[connection signal="body_exited" from="SelectTool" to="." method="_on_SelectTool_body_exited"]

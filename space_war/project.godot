@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="space_war"
+run/main_scene="res://scenes/ui/ShipsControl/Control.tscn"
 config/icon="res://icon.png"
 
 [display]
