@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -13,4 +13,4 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("click1"):
-		position = get_global_mouse_position()
+		self.global_position = get_global_mouse_position()

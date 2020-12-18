@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://scenes/entities/base/FSM.gd"
+"path": "res://scenes/entities/base/scripts/FSM.gd"
 } ]
 _global_script_class_icons={
 "StateMachine": ""
@@ -27,7 +27,7 @@ config/icon="res://icon.png"
 [display]
 
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [input]
 

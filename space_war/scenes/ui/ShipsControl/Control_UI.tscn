@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/ShipsControl/Control_UI.gd" type="Script" id=1]
+
+[node name="Control_UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.988983
+margin_top = 2.31546
+margin_right = 0.989014
+margin_bottom = 2.31543
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 1.0
+margin_top = 460.0
+margin_right = 1022.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Panel"]
+margin_left = 440.148
+margin_top = 9.16876
+margin_right = 546.148
+margin_bottom = 109.169
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Panel/ViewportContainer"]
+size = Vector2( 100, 100 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="Panel/ViewportContainer/Viewport"]
+position = Vector2( 321.731, 369.522 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="EnergyLabel" type="Label" parent="Panel"]
+margin_left = 9.12086
+margin_top = 79.3334
+margin_right = 59.1209
+margin_bottom = 93.3334
+text = "Energy: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Energy" type="Label" parent="Panel/EnergyLabel"]
+margin_left = 49.0
+margin_right = 99.0
+margin_bottom = 14.0
+text = "Energy: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthLabel" type="Label" parent="Panel"]
+margin_left = 7.86234
+margin_top = 28.0009
+margin_right = 57.8623
+margin_bottom = 42.0009
+text = "Health: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="Panel/HealthLabel"]
+margin_left = 48.0
+margin_right = 98.0
+margin_bottom = 14.0
+text = "Health: "
+__meta__ = {
+"_edit_use_anchors_": false
+}

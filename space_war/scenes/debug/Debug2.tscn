@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/map/space2.jpg" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/debug/target.tscn" type="PackedScene" id=4]
+
+[node name="World" type="Node2D"]
+position = Vector2( 511.58, 298.264 )
+
+[node name="Map" type="Sprite" parent="."]
+position = Vector2( -37.987, -3.638 )
+scale = Vector2( 1.96322, 2.08023 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ships" type="Node2D" parent="."]
+position = Vector2( -511.58, -298.264 )
+
+[node name="test" type="Sprite" parent="Ships"]
+position = Vector2( 328.839, 42.2074 )
+scale = Vector2( 0.310981, 0.330667 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" parent="Ships" groups=[
+"enemies",
+] instance=ExtResource( 4 )]
+position = Vector2( 26.806, 34.3241 )
+rotation = 0.0062329
+
+[node name="bullets" type="Node2D" parent="."]
+position = Vector2( -511.58, -298.264 )

@@ -11,6 +11,7 @@ func _process(delta):
 		fixed_toggle_point = ref
 	if Input.is_action_pressed("click0"):
 		slide_map_around()
+	$SelectTool.global_position = get_global_mouse_position()
 		
 func _input(event):
 	if event is InputEventMouseButton:
